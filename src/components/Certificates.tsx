@@ -1,0 +1,89 @@
+import React, { useState } from 'react';
+import { certificatesData } from '../data/portfolioData';
+import { Award, ExternalLink, X, FileText, Eye } from 'lucide-react';
+
+const Certificates: React.FC = () => {
+  const [selectedFile, setSelectedFile] = useState<string | null>(null);
+
+  const isPDF = (url: string) => url.toLowerCase().endsWith('.pdf');
+
+  return (
+    <section id="sertifikat" className="py-24 md:py-32 border-t border-[var(--border)]">
+      <div className="container mx-auto px-6 md:px-12 lg:px-24">
+        <div className="text-center lg:text-left mb-16 md:mb-20">
+          <h2 className="text-[10px] font-bold uppercase tracking-[0.4em] mb-4 opacity-30 text-[var(--text)]">Achievements</h2>
+          <h3 className="text-3xl md:text-5xl font-black tracking-tighter italic text-[var(--text)] text-nowrap text-nowrap">Official <span className="accent-text opacity-70 text-nowrap">Certifications.</span></h3>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 text-nowrap">
+          {certificatesData.map((cert, i) => (
+            <div 
+              key={cert.id} 
+              data-aos="fade-up" 
+              data-aos-delay={i * 100}
+              onClick={() => setSelectedFile(cert.file)}
+              className="group card-minimal rounded-[2.5rem] p-8 flex flex-col justify-between hover:border-[var(--text)] transition-all duration-500 shadow-sm hover:shadow-xl relative overflow-hidden cursor-pointer bg-white dark:bg-zinc-900/20"
+            >
+              <div className="absolute top-0 right-0 w-24 h-24 bg-[var(--accent)] opacity-[0.03] -mr-8 -mt-8 rounded-full"></div>
+              
+              <div>
+                <div className="w-14 h-14 rounded-2xl bg-[var(--icon-bg)] flex items-center justify-center text-[var(--accent)] mb-8 group-hover:scale-110 transition-transform duration-500 shadow-inner">
+                  {isPDF(cert.file) ? <FileText size={28} /> : <Award size={28} />}
+                </div>
+                <h4 className="text-xl font-bold mb-2 tracking-tight text-[var(--text)] leading-tight">{cert.title}</h4>
+                <p className="text-[10px] font-bold uppercase tracking-[0.2em] opacity-40 text-[var(--text)] mb-8">
+                  {cert.issuer} • {cert.date}
+                </p>
+              </div>
+
+              <div className="flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.2em] text-[var(--text)] opacity-40 group-hover:opacity-100 hover:text-[var(--accent)] transition-all">
+                Preview Document <Eye size={12} className="ml-1" />
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {selectedFile && (
+        <div className="fixed inset-0 z-[300] flex flex-col items-center justify-center bg-black/95 backdrop-blur-xl animate-in fade-in duration-300">
+          <div className="absolute top-0 w-full flex justify-between items-center p-8 z-30">
+            <div className="flex items-center gap-4 text-white/60 text-nowrap text-nowrap text-nowrap">
+              {isPDF(selectedFile) ? <FileText size={20} /> : <Award size={20} />}
+              <span className="text-[10px] font-bold uppercase tracking-widest text-nowrap text-nowrap text-nowrap text-nowrap text-nowrap">Credential Viewer</span>
+            </div>
+            <button 
+              onClick={() => setSelectedFile(null)}
+              className="p-4 bg-white/10 hover:bg-white/20 text-white rounded-full transition-all hover:rotate-90 text-nowrap"
+            >
+              <X size={24} />
+            </button>
+          </div>
+          
+          <div className="w-full h-full max-w-6xl p-6 md:p-20 flex items-center justify-center">
+            {isPDF(selectedFile) ? (
+              <iframe 
+                src={selectedFile} 
+                className="w-full h-full rounded-2xl shadow-2xl border border-white/10 bg-white"
+                title="PDF Preview"
+              />
+            ) : (
+              <div className="relative group max-h-full">
+                <img 
+                  src={selectedFile} 
+                  alt="Certificate Preview" 
+                  className="max-w-full max-h-[80vh] object-contain rounded-2xl shadow-2xl border border-white/10" 
+                />
+              </div>
+            )}
+          </div>
+          
+          <p className="absolute bottom-8 text-white/30 text-[10px] font-bold uppercase tracking-[0.3em] text-nowrap text-nowrap text-nowrap">
+            Official {isPDF(selectedFile) ? 'PDF' : 'Image'} Credential Preview
+          </p>
+        </div>
+      )}
+    </section>
+  );
+};
+
+export default Certificates;

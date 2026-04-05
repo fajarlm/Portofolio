@@ -44,7 +44,7 @@ const TechStack: React.FC = () => {
         >
           <div className="flex gap-12 whitespace-nowrap w-max px-10 cursor-pointer">
             {[...techStack, ...techStack, ...techStack].map((s, i) => (
-              <div key={i} className="relative group flex-shrink-0 px-2">
+              <div key={i} className="relative group flex-shrink-0 px-2 flex flex-col items-center">
                 {/* Tooltip */}
                 <div className="absolute -top-14 left-1/2 -translate-x-1/2 px-3 py-1.5 bg-indigo-600 text-white text-[10px] font-bold rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none shadow-xl z-20 whitespace-nowrap">
                   {s.desc}
@@ -52,8 +52,8 @@ const TechStack: React.FC = () => {
                 </div>
 
                 <div className="p-6 card-minimal rounded-3xl flex flex-col items-center justify-center min-w-[140px] gap-4 group-hover:scale-105 transition-all duration-500">
-                  <div className="tech-icon-container w-16 h-16 transform group-hover:scale-110 transition-transform duration-500 shadow-sm">
-                    <img src={s.icon} alt={s.name} className="w-10 h-10 object-contain" />
+                  <div className="tech-icon-container w-16 h-16 flex items-center justify-center transform group-hover:scale-110 transition-transform duration-500 shadow-sm overflow-hidden">
+                    <img src={s.icon} alt={s.name} className="w-10 h-10 object-contain mx-auto" />
                   </div>
                   <p className="font-bold text-[10px] tracking-widest uppercase opacity-60 text-[var(--text)] group-hover:opacity-100 transition-opacity">
                     {s.name}

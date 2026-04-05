@@ -7,9 +7,11 @@ export interface Skill {
 export interface Project {
   id: number;
   title: string;
+  description: string;
   type: 'web' | 'mobile' | 'desktop';
-  tech: string;
+  tech: string[];
   img: string;
+  gallery?: string[];
   github?: string;
   demo?: string;
 }
@@ -19,7 +21,7 @@ export interface Certificate {
   title: string;
   issuer: string;
   date: string;
-  link: string;
+  file: string;
 }
 
 export type Theme = 'light' | 'dark' | 'cyan';

@@ -20,7 +20,7 @@ const Navbar: React.FC<NavbarProps> = ({ theme, setTheme, onOpenSidebar, isSideb
             </button>
           )}
           <a href="#home" className="text-xl font-bold tracking-tighter text-[var(--text)]">
-            Porto<span className="accent-text">.</span>
+            fajarlm<span className="accent-text">.</span>
           </a>
         </div>
 

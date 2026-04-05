@@ -12,13 +12,14 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
     { name: 'Tentang', id: 'tentang' },
     { name: 'Keahlian', id: 'keahlian' },
     { name: 'Proyek', id: 'proyek' },
+    { name: 'Sertifikat', id: 'sertifikat' },
     { name: 'Kontak', id: 'contact' }
   ];
 
   const socialLinks = [
-    { icon: <Globe size={18} />, url: 'https://github.com', label: 'GitHub' },
-    { icon: <User size={18} />, url: 'https://linkedin.com', label: 'LinkedIn' },
-    { icon: <Terminal size={18} />, url: 'https://instagram.com', label: 'Instagram' },
+    { icon: <Globe size={18} />, url: 'https://github.com/fajarlm', label: 'GitHub' },
+    { icon: <User size={18} />, url: 'https://www.linkedin.com/in/fajar-kusuma-2f88/', label: 'LinkedIn' },
+    { icon: <Terminal size={18} />, url: 'https://www.instagram.com/fajarkusuma_lm/', label: 'Instagram' },
     { icon: <Mail size={18} />, url: 'mailto:kusumafajar080802@gmail.com', label: 'Email' }
   ];
 
