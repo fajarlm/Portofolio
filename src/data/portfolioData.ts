@@ -65,42 +65,7 @@ export const projectsData: Project[] = [
     github: 'https://github.com/fajarlm', 
     demo: 'https://demo.com' 
   },
-  { 
-    id: 4, 
-    title: 'POS Desktop App', 
-    description: {
-      en: 'Offline-first point of sale system with local database and reporting.',
-      id: 'Sistem kasir offline-first dengan database lokal dan pelaporan.'
-    },
-    type: 'desktop', 
-    tech: ['C#', '.NET', 'SQLite', 'Entity Framework'], 
-    img: 'https://images.unsplash.com/photo-1556742044-3c52d6e88c62?w=800', 
-    github: 'https://github.com/fajarlm' 
-  },
-  { 
-    id: 5, 
-    title: 'Task Master Mobile', 
-    description: {
-      en: 'Productivity app with subtasks, reminders, and cross-device sync.',
-      id: 'Aplikasi produktivitas dengan subtask, pengingat, dan sinkronisasi perangkat.'
-    },
-    type: 'mobile', 
-    tech: ['React Native', 'Redux', 'Node.js', 'Express'], 
-    img: 'https://images.unsplash.com/photo-1551650975-87deedd944c3?w=800', 
-    github: 'https://github.com/fajarlm' 
-  },
-  { 
-    id: 6, 
-    title: 'Warehouse Management', 
-    description: {
-      en: 'Enterprise-level warehouse tracking with barcode scanning support.',
-      id: 'Pelacakan gudang tingkat perusahaan dengan dukungan pemindaian barcode.'
-    },
-    type: 'desktop', 
-    tech: ['Java', 'JavaFX', 'PostgreSQL', 'JasperReports'], 
-    img: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=800', 
-    github: 'https://github.com/fajarlm' 
-  }
+  
 ];
 
 export const certificatesData: Certificate[] = [

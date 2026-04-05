@@ -1,6 +1,6 @@
 import React from 'react';
 import { ArrowRight, Code2 } from 'lucide-react';
-import { socialLinks, translations } from '../data/portfolioData';
+import { translations } from '../data/portfolioData';
 import imageProfil from '../assets/profil.png';
 import type { Language } from '../types';
 

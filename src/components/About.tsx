@@ -25,10 +25,10 @@ const About: React.FC<AboutProps> = ({ lang }) => {
             </div>
 
             <div className="flex justify-center lg:justify-start gap-4 md:gap-8 mb-4">
-              {['bio', 'education'].map((tab) => (
+              {(['bio', 'education'] as const).map((tab) => (
                 <button 
                   key={tab}
-                  onClick={() => setActiveTab(tab as any)}
+                  onClick={() => setActiveTab(tab)}
                   className={`text-[10px] md:text-xs font-bold uppercase tracking-widest transition-all pb-2 border-b-2 ${activeTab === tab ? 'border-[var(--text)] text-[var(--text)]' : 'border-transparent opacity-30 hover:opacity-100'}`}
                 >
                   {tab === 'bio' ? (lang === 'en' ? 'Biography' : 'Biografi') : (lang === 'en' ? 'Education' : 'Pendidikan')}

@@ -22,9 +22,10 @@ const Projects: React.FC<ProjectsProps> = ({ lang }) => {
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = filteredProjects.slice(indexOfFirstItem, indexOfLastItem);
 
-  useEffect(() => {
+  const handleFilterChange = (cat: 'all' | 'web' | 'mobile' | 'desktop') => {
+    setFilter(cat);
     setCurrentPage(1);
-  }, [filter]);
+  };
 
   useEffect(() => {
     AOS.refresh();
@@ -38,19 +39,19 @@ const Projects: React.FC<ProjectsProps> = ({ lang }) => {
   };
 
   return (
-    <section id="proyek" className="py-24 md:py-32 border-t border-[var(--border)] relative   ">
+    <section id="proyek" className="py-24 md:py-32 border-t border-[var(--border)] relative bg-shape-grid">
       <div className="container mx-auto text-[var(--text)]">
         <div className="flex flex-col lg:flex-row justify-between items-center lg:items-end mb-12 md:mb-20 gap-8">
           <div className="text-center lg:text-left">
             <h2 className="text-[10px] font-bold uppercase tracking-[0.4em] mb-4 opacity-30 text-nowrap">{lang === 'en' ? 'Portfolio' : 'Portofolio'}</h2>
             <h3 className="text-3xl md:text-5xl font-black tracking-tighter italic text-nowrap">{t.title} <span className="accent-text opacity-70">{t.subtitle}</span></h3>
           </div>
-          
+
           <div className="flex flex-wrap justify-center gap-2">
             {(['all', 'web', 'mobile', 'desktop'] as const).map(cat => (
               <button 
                 key={cat}
-                onClick={() => setFilter(cat)}
+                onClick={() => handleFilterChange(cat)}
                 className={`px-5 md:px-6 py-2 rounded-full text-[9px] md:text-[10px] font-bold uppercase tracking-widest border border-[var(--border)] transition-all ${filter === cat ? 'bg-[var(--text)] text-[var(--bg)] border-[var(--text)] shadow-lg' : 'hover:border-[var(--text)] opacity-60 hover:opacity-100'}`}
               >
                 {filterMap[cat]}
