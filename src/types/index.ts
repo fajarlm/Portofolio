@@ -1,13 +1,13 @@
 export interface Skill {
   name: string;
   icon: string;
-  desc: string;
+  desc: { en: string; id: string };
 }
 
 export interface Project {
   id: number;
   title: string;
-  description: string;
+  description: { en: string; id: string };
   type: 'web' | 'mobile' | 'desktop';
   tech: string[];
   img: string;
@@ -25,3 +25,4 @@ export interface Certificate {
 }
 
 export type Theme = 'light' | 'dark' | 'cyan';
+export type Language = 'en' | 'id';

@@ -1,10 +1,17 @@
 import React, { useState } from 'react';
+import type { Language } from '../types';
+import { translations } from '../data/portfolioData';
 
-const About: React.FC = () => {
+interface AboutProps {
+  lang: Language;
+}
+
+const About: React.FC<AboutProps> = ({ lang }) => {
   const [activeTab, setActiveTab] = useState<'bio' | 'education'>('bio');
+  const t = translations[lang].about;
 
   return (
-    <section id="tentang" className="py-24 md:py-32 px-6">
+    <section id="tentang" className="py-24 md:py-32 px-6 relative">
       <div className="container mx-auto max-w-5xl">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-start">
           <div className="relative lg:sticky lg:top-32 flex justify-center lg:block" data-aos="fade-up">
@@ -20,10 +27,10 @@ const About: React.FC = () => {
 
           <div data-aos="fade-up" data-aos-delay="100">
             <div className="text-center lg:text-left mb-10">
-              <h2 className="text-[10px] font-bold uppercase tracking-[0.4em] mb-4 opacity-30 text-[var(--text)]">Professional Profile</h2>
-              <h3 className="text-3xl md:text-5xl font-black mb-6 text-[var(--text)] tracking-tighter italic text-nowrap text-nowrap">Passion for <span className="accent-text opacity-70">Excellence.</span></h3>
+              <h2 className="text-[10px] font-bold uppercase tracking-[0.4em] mb-4 opacity-30 text-[var(--text)]">{lang === 'en' ? 'Professional Profile' : 'Profil Profesional'}</h2>
+              <h3 className="text-3xl md:text-5xl font-black mb-6 text-[var(--text)] tracking-tighter italic text-nowrap">{t.title.split(' ').slice(0, -1).join(' ')} <span className="accent-text opacity-70">{t.title.split(' ').slice(-1)}</span></h3>
               <p className="text-sm md:text-base text-[var(--text)] opacity-60 leading-relaxed font-medium">
-                As an 11th-grade student majoring in Software Engineering, I am committed to building user-oriented digital solutions through code efficiency and measured visual aesthetics.
+                {lang === 'en' ? 'As an 11th-grade student majoring in Software Engineering, I am committed to building user-oriented digital solutions through code efficiency and measured visual aesthetics.' : 'Sebagai siswa kelas 11 jurusan Pengembangan Perangkat Lunak, saya berkomitmen untuk membangun solusi digital yang berorientasi pada pengguna melalui efisiensi kode dan estetika visual yang terukur.'}
               </p>
             </div>
 
@@ -34,7 +41,7 @@ const About: React.FC = () => {
                   onClick={() => setActiveTab(tab as any)}
                   className={`text-[10px] md:text-xs font-bold uppercase tracking-widest transition-all pb-2 border-b-2 ${activeTab === tab ? 'border-[var(--text)] text-[var(--text)]' : 'border-transparent opacity-30 hover:opacity-100'}`}
                 >
-                  {tab === 'bio' ? 'Biography' : 'Education'}
+                  {tab === 'bio' ? (lang === 'en' ? 'Biography' : 'Biografi') : (lang === 'en' ? 'Education' : 'Pendidikan')}
                 </button>
               ))}
             </div>
@@ -45,30 +52,30 @@ const About: React.FC = () => {
               {activeTab === 'bio' ? (
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-6 animate-in fade-in duration-500">
                   <div>
-                    <p className="text-[9px] uppercase opacity-30 mb-1 tracking-widest font-bold text-nowrap text-nowrap">Location</p>
-                    <p className="text-sm font-bold opacity-80 text-nowrap text-nowrap">Bogor, West Java</p>
+                    <p className="text-[9px] uppercase opacity-30 mb-1 tracking-widest font-bold text-nowrap">{lang === 'en' ? 'Location' : 'Lokasi'}</p>
+                    <p className="text-sm font-bold opacity-80 text-nowrap">{lang === 'en' ? 'Bogor, West Java' : 'Bogor, Jawa Barat'}</p>
                   </div>
                   <div>
-                    <p className="text-[9px] uppercase opacity-30 mb-1 tracking-widest font-bold text-nowrap text-nowrap">Availability</p>
-                    <p className="text-sm font-bold text-emerald-600/80 uppercase tracking-tighter text-nowrap text-nowrap">Ready for Internship</p>
+                    <p className="text-[9px] uppercase opacity-30 mb-1 tracking-widest font-bold text-nowrap">{lang === 'en' ? 'Availability' : 'Status'}</p>
+                    <p className="text-sm font-bold text-emerald-600/80 uppercase tracking-tighter text-nowrap">{lang === 'en' ? 'Ready for Internship' : 'Siap untuk Magang'}</p>
                   </div>
                   <div className="sm:col-span-2">
-                    <p className="text-[9px] uppercase opacity-30 mb-1 tracking-widest font-bold text-nowrap text-nowrap">Correspondence</p>
+                    <p className="text-[9px] uppercase opacity-30 mb-1 tracking-widest font-bold text-nowrap">{lang === 'en' ? 'Correspondence' : 'Korespondensi'}</p>
                     <p className="text-sm font-bold opacity-80 break-all">kusumafajar080802@gmail.com</p>
                   </div>
                 </div>
               ) : (
                 <div className="space-y-8 animate-in fade-in duration-500">
-                  <div className="relative pl-8 border-l-2 border-[var(--border)] ml-2 text-nowrap text-nowrap">
+                  <div className="relative pl-8 border-l-2 border-[var(--border)] ml-2 text-nowrap">
                     <div className="absolute -left-[6px] top-1.5 w-3 h-3 rounded-sm bg-[var(--text)] rotate-45"></div>
-                    <p className="text-[9px] font-bold opacity-30 tracking-widest uppercase">2022 - Present</p>
-                    <h4 className="text-sm font-bold opacity-80">Vocational High School (PPLG)</h4>
-                    <p className="text-xs opacity-50 mt-1">Focus: Software Engineering, Web & Mobile Development.</p>
+                    <p className="text-[9px] font-bold opacity-30 tracking-widest uppercase">{lang === 'en' ? '2022 - Present' : '2022 - Sekarang'}</p>
+                    <h4 className="text-sm font-bold opacity-80">{lang === 'en' ? 'Vocational High School (PPLG)' : 'SMK (Jurusan PPLG)'}</h4>
+                    <p className="text-xs opacity-50 mt-1">{lang === 'en' ? 'Focus: Software Engineering, Web & Mobile Development.' : 'Fokus: Rekayasa Perangkat Lunak, Pengembangan Web & Mobile.'}</p>
                   </div>
-                  <div className="relative pl-8 border-l-2 border-[var(--border)] ml-2 opacity-50 text-nowrap text-nowrap text-nowrap">
+                  <div className="relative pl-8 border-l-2 border-[var(--border)] ml-2 opacity-50 text-nowrap">
                     <div className="absolute -left-[6px] top-1.5 w-3 h-3 rounded-sm bg-[var(--border)] rotate-45"></div>
                     <p className="text-[9px] font-bold opacity-30 tracking-widest uppercase">2019 - 2022</p>
-                    <h4 className="text-sm font-bold opacity-80 text-nowrap text-nowrap text-nowrap text-nowrap">Junior High School</h4>
+                    <h4 className="text-sm font-bold opacity-80">{lang === 'en' ? 'Junior High School' : 'SMP'}</h4>
                   </div>
                 </div>
               )}

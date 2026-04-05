@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { ChevronUp } from 'lucide-react';
-import type { Theme } from './types';
+import type { Theme, Language } from './types';
 
 import Navbar from './components/Navbar';
 import Sidebar from './components/Sidebar';
@@ -16,6 +16,7 @@ import Footer from './components/Footer';
 
 export default function App() {
   const [theme, setTheme] = useState<Theme>((localStorage.getItem('theme') as Theme) || 'light');
+  const [lang, setLang] = useState<Language>((localStorage.getItem('lang') as Language) || 'en');
   const [isSidebarOpen, setSidebarOpen] = useState(false);
   const [showScrollTop, setShowScrollTop] = useState(false);
 
@@ -31,6 +32,10 @@ export default function App() {
     localStorage.setItem('theme', theme);
   }, [theme]);
 
+  useEffect(() => {
+    localStorage.setItem('lang', lang);
+  }, [lang]);
+
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
 
   return (
@@ -38,28 +43,30 @@ export default function App() {
       <Navbar 
         theme={theme} 
         setTheme={setTheme} 
+        lang={lang}
+        setLang={setLang}
         onOpenSidebar={() => setSidebarOpen(true)} 
         isSidebarOpen={isSidebarOpen} 
       />
       
-      <Sidebar isOpen={isSidebarOpen} onClose={() => setSidebarOpen(false)} />
+      <Sidebar isOpen={isSidebarOpen} onClose={() => setSidebarOpen(false)} lang={lang} />
 
       <div className={`transition-all duration-700 min-h-screen flex flex-col ${isSidebarOpen ? 'lg:pl-72' : 'pl-0'}`}>
         
         <main className="flex-grow">
-          <Hero />
-          <About />
+          <Hero lang={lang} />
+          <About lang={lang} />
           
           <div className="px-6 md:px-12 lg:px-24">
-            <TechStack />
-            <Projects />
-            <Certificates />
+            <TechStack lang={lang} />
+            <Projects lang={lang} />
+            <Certificates lang={lang} />
           </div>
 
-          <Contact />
+          <Contact lang={lang} />
         </main>
 
-        <Footer />
+        <Footer lang={lang} />
 
         <button 
           onClick={scrollToTop} 

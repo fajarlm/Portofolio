@@ -1,13 +1,19 @@
 import React, { useState, useEffect } from 'react';
-import { projectsData } from '../data/portfolioData';
+import { projectsData, translations } from '../data/portfolioData';
 import { Globe, ExternalLink, ChevronLeft, ChevronRight, X, Image as ImageIcon } from 'lucide-react';
 import AOS from 'aos';
+import type { Language } from '../types';
 
-const Projects: React.FC = () => {
+interface ProjectsProps {
+  lang: Language;
+}
+
+const Projects: React.FC<ProjectsProps> = ({ lang }) => {
   const [filter, setFilter] = useState<'all' | 'web' | 'mobile' | 'desktop'>('all');
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedGallery, setSelectedGallery] = useState<string[] | null>(null);
   const itemsPerPage = 6;
+  const t = translations[lang].projects;
 
   const filteredProjects = filter === 'all' ? projectsData : projectsData.filter(p => p.type === filter);
   
@@ -25,19 +31,19 @@ const Projects: React.FC = () => {
   }, [currentPage]);
 
   const filterMap: Record<string, string> = {
-    all: 'All',
+    all: t.filterAll,
     web: 'Web',
     mobile: 'Mobile',
     desktop: 'Desktop'
   };
 
   return (
-    <section id="proyek" className="py-24 md:py-32 border-t border-[var(--border)]">
+    <section id="proyek" className="py-24 md:py-32 border-t border-[var(--border)] relative">
       <div className="container mx-auto text-[var(--text)]">
         <div className="flex flex-col lg:flex-row justify-between items-center lg:items-end mb-12 md:mb-20 gap-8">
           <div className="text-center lg:text-left">
-            <h2 className="text-[10px] font-bold uppercase tracking-[0.4em] mb-4 opacity-30 text-nowrap">Portfolio</h2>
-            <h3 className="text-3xl md:text-5xl font-black tracking-tighter italic text-nowrap">Selected <span className="accent-text opacity-70">Works.</span></h3>
+            <h2 className="text-[10px] font-bold uppercase tracking-[0.4em] mb-4 opacity-30 text-nowrap">{lang === 'en' ? 'Portfolio' : 'Portofolio'}</h2>
+            <h3 className="text-3xl md:text-5xl font-black tracking-tighter italic text-nowrap">{t.title} <span className="accent-text opacity-70">{t.subtitle}</span></h3>
           </div>
           
           <div className="flex flex-wrap justify-center gap-2">
@@ -73,9 +79,8 @@ const Projects: React.FC = () => {
 
               <div className="px-2 flex flex-col flex-grow">
                 <h4 className="text-lg md:text-xl font-bold mb-2 tracking-tight leading-tight">{p.title}</h4>
-                <p className="text-[11px] text-[var(--text-muted)] mb-6 line-clamp-2 leading-relaxed italic opacity-80">{p.description}</p>
+                <p className="text-[11px] text-[var(--text-muted)] mb-6 line-clamp-2 leading-relaxed italic opacity-80">{p.description[lang]}</p>
                 
-                {/* Tech Stack Badges */}
                 <div className="flex flex-wrap gap-2 mb-6">
                   {p.tech.map((t, idx) => (
                     <span key={idx} className="px-2 py-1 rounded-md bg-[var(--icon-bg)] text-[var(--text)] text-[9px] font-bold uppercase tracking-tighter opacity-70 group-hover:opacity-100 transition-opacity">
@@ -125,8 +130,8 @@ const Projects: React.FC = () => {
           
           <div className="container mx-auto max-w-5xl px-6 pb-20 space-y-12">
             <div className="text-center">
-              <p className="text-[10px] font-bold uppercase tracking-[0.5em] text-white/40 mb-4">Project Documentation</p>
-              <h3 className="text-3xl md:text-5xl font-black text-white tracking-tighter">Gallery View.</h3>
+              <p className="text-[10px] font-bold uppercase tracking-[0.5em] text-white/40 mb-4">{lang === 'en' ? 'Project Documentation' : 'Dokumentasi Proyek'}</p>
+              <h3 className="text-3xl md:text-5xl font-black text-white tracking-tighter">{lang === 'en' ? 'Gallery View.' : 'Tampilan Galeri.'}</h3>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">

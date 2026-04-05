@@ -46,7 +46,7 @@ body {
 
 .glass { 
     background: rgba(var(--bg), 0.8); 
-    backdrop-filter: blur(10px); 
+    backdrop-filter: blur(12px); 
     border: 1px solid var(--border); 
 }
 
@@ -74,6 +74,33 @@ body {
     justify-content: center;
     border-radius: 1.25rem;
     transition: all 0.3s ease;
+    min-width: 160px;
+}
+
+@keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+@keyframes marquee-reverse {
+    0% { transform: translateX(-50%); }
+    100% { transform: translateX(0); }
+}
+
+.animate-marquee {
+    display: flex;
+    width: max-content;
+    animation: marquee 30s linear infinite;
+}
+
+.animate-marquee-reverse {
+    display: flex;
+    width: max-content;
+    animation: marquee-reverse 30s linear infinite;
+}
+
+.animate-marquee:hover, .animate-marquee-reverse:hover {
+    animation-play-state: paused;
 }
 
 .tech-icon-container:hover {

@@ -1,21 +1,27 @@
 import React, { useState } from 'react';
-import { certificatesData } from '../data/portfolioData';
-import { Award, ExternalLink, X, FileText, Eye } from 'lucide-react';
+import { certificatesData, translations } from '../data/portfolioData';
+import { Award, X, FileText, Eye } from 'lucide-react';
+import type { Language } from '../types';
 
-const Certificates: React.FC = () => {
+interface CertificatesProps {
+  lang: Language;
+}
+
+const Certificates: React.FC<CertificatesProps> = ({ lang }) => {
   const [selectedFile, setSelectedFile] = useState<string | null>(null);
+  const t = translations[lang].certificates;
 
   const isPDF = (url: string) => url.toLowerCase().endsWith('.pdf');
 
   return (
-    <section id="sertifikat" className="py-24 md:py-32 border-t border-[var(--border)]">
+    <section id="sertifikat" className="py-24 md:py-32 border-t border-[var(--border)] relative overflow-hidden">
       <div className="container mx-auto px-6 md:px-12 lg:px-24">
         <div className="text-center lg:text-left mb-16 md:mb-20">
-          <h2 className="text-[10px] font-bold uppercase tracking-[0.4em] mb-4 opacity-30 text-[var(--text)]">Achievements</h2>
-          <h3 className="text-3xl md:text-5xl font-black tracking-tighter italic text-[var(--text)] text-nowrap text-nowrap">Official <span className="accent-text opacity-70 text-nowrap">Certifications.</span></h3>
+          <h2 className="text-[10px] font-bold uppercase tracking-[0.4em] mb-4 opacity-30 text-[var(--text)]">{lang === 'en' ? 'Achievements' : 'Pencapaian'}</h2>
+          <h3 className="text-3xl md:text-5xl font-black tracking-tighter italic text-[var(--text)]">{t.title} <span className="accent-text opacity-70">{t.subtitle}</span></h3>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 text-nowrap">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           {certificatesData.map((cert, i) => (
             <div 
               key={cert.id} 
@@ -37,7 +43,7 @@ const Certificates: React.FC = () => {
               </div>
 
               <div className="flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.2em] text-[var(--text)] opacity-40 group-hover:opacity-100 hover:text-[var(--accent)] transition-all">
-                Preview Document <Eye size={12} className="ml-1" />
+                {lang === 'en' ? 'Preview Document' : 'Lihat Dokumen'} <Eye size={12} className="ml-1" />
               </div>
             </div>
           ))}
@@ -47,13 +53,13 @@ const Certificates: React.FC = () => {
       {selectedFile && (
         <div className="fixed inset-0 z-[300] flex flex-col items-center justify-center bg-black/95 backdrop-blur-xl animate-in fade-in duration-300">
           <div className="absolute top-0 w-full flex justify-between items-center p-8 z-30">
-            <div className="flex items-center gap-4 text-white/60 text-nowrap text-nowrap text-nowrap">
+            <div className="flex items-center gap-4 text-white/60">
               {isPDF(selectedFile) ? <FileText size={20} /> : <Award size={20} />}
-              <span className="text-[10px] font-bold uppercase tracking-widest text-nowrap text-nowrap text-nowrap text-nowrap text-nowrap">Credential Viewer</span>
+              <span className="text-[10px] font-bold uppercase tracking-widest">{lang === 'en' ? 'Credential Viewer' : 'Peninjau Kredensial'}</span>
             </div>
             <button 
               onClick={() => setSelectedFile(null)}
-              className="p-4 bg-white/10 hover:bg-white/20 text-white rounded-full transition-all hover:rotate-90 text-nowrap"
+              className="p-4 bg-white/10 hover:bg-white/20 text-white rounded-full transition-all hover:rotate-90"
             >
               <X size={24} />
             </button>
@@ -77,8 +83,8 @@ const Certificates: React.FC = () => {
             )}
           </div>
           
-          <p className="absolute bottom-8 text-white/30 text-[10px] font-bold uppercase tracking-[0.3em] text-nowrap text-nowrap text-nowrap">
-            Official {isPDF(selectedFile) ? 'PDF' : 'Image'} Credential Preview
+          <p className="absolute bottom-8 text-white/30 text-[10px] font-bold uppercase tracking-[0.3em]">
+            {lang === 'en' ? 'Official Credential Preview' : 'Pratinjau Kredensial Resmi'}
           </p>
         </div>
       )}

@@ -1,73 +1,65 @@
-import React, { useRef, useEffect, useState } from 'react';
-import { techStack } from '../data/portfolioData';
+import React from 'react';
+import { techStack, translations } from '../data/portfolioData';
+import type { Language } from '../types';
 
-const TechStack: React.FC = () => {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const [isPaused, setIsPaused] = useState(false);
-  const xPosRef = useRef(0);
+interface TechStackProps {
+  lang: Language;
+}
 
-  useEffect(() => {
-    let animId: number;
-
-    const animate = () => {
-      const container = containerRef.current;
-      if (container && !isPaused) {
-        xPosRef.current += 0.8;
-        if (xPosRef.current >= container.scrollWidth / 3) {
-          xPosRef.current = 0;
-        }
-        container.scrollLeft = xPosRef.current;
-      }
-      animId = requestAnimationFrame(animate);
-    };
-
-    animId = requestAnimationFrame(animate);
-    return () => cancelAnimationFrame(animId);
-  }, [isPaused]);
+const TechStack: React.FC<TechStackProps> = ({ lang }) => {
+  const t = translations[lang].tech;
+  
+  // Bagi techStack jadi 2 baris
+  const row1 = [...techStack.slice(0, 4), ...techStack.slice(0, 4)]; // Duplikasi buat infinite scroll
+  const row2 = [...techStack.slice(4), ...techStack.slice(4)];
 
   return (
-    <section id="keahlian" className="py-32 px-6">
-      <div className="container mx-auto text-center">
-        <h2 className="text-xs font-extrabold uppercase tracking-[0.4em] mb-16 opacity-50 text-[var(--text)]">
-          Tech Stack
-        </h2>
-        
-        <div 
-          ref={containerRef}
-          className="relative w-full overflow-hidden py-20 flex" 
-          style={{ 
-            maskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)', 
-            WebkitMaskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)' 
-          }}
-          onMouseEnter={() => setIsPaused(true)}
-          onMouseLeave={() => setIsPaused(false)}
-        >
-          <div className="flex gap-12 whitespace-nowrap w-max px-10 cursor-pointer">
-            {[...techStack, ...techStack, ...techStack].map((s, i) => (
-              <div key={i} className="relative group flex-shrink-0 px-2 flex flex-col items-center">
-                {/* Tooltip */}
-                <div className="absolute -top-14 left-1/2 -translate-x-1/2 px-3 py-1.5 bg-indigo-600 text-white text-[10px] font-bold rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none shadow-xl z-20 whitespace-nowrap">
-                  {s.desc}
-                  <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-indigo-600 rotate-45"></div>
-                </div>
+    <section id="keahlian" className="py-24 md:py-32 overflow-hidden relative">
+      <div className="container mx-auto px-6 mb-16 md:mb-24">
+        <div className="flex flex-col md:flex-row justify-between items-center md:items-end gap-8">
+          <div className="text-center md:text-left">
+            <h2 className="text-[10px] font-bold uppercase tracking-[0.4em] mb-4 opacity-30 text-[var(--text)]">{lang === 'en' ? 'Core Technologies' : 'Teknologi Utama'}</h2>
+            <h3 className="text-3xl md:text-5xl font-black tracking-tighter italic text-nowrap text-[var(--text)]">
+              {t.title} <span className="accent-text opacity-70">{t.subtitle}</span>
+            </h3>
+          </div>
+          <p className="max-w-md text-sm md:text-base text-[var(--text)] opacity-50 font-medium text-center md:text-right leading-relaxed">
+            {lang === 'en' ? 'Transforming ideas into reality using the most advanced and reliable digital tools.' : 'Mentransformasi ide menjadi kenyataan menggunakan alat digital paling canggih dan andal.'}
+          </p>
+        </div>
+      </div>
 
-                <div className="p-6 card-minimal rounded-3xl flex flex-col items-center justify-center min-w-[140px] gap-4 group-hover:scale-105 transition-all duration-500">
-                  <div className="tech-icon-container w-16 h-16 flex items-center justify-center transform group-hover:scale-110 transition-transform duration-500 shadow-sm overflow-hidden">
-                    <img src={s.icon} alt={s.name} className="w-10 h-10 object-contain mx-auto" />
+      <div className="space-y-6 md:space-y-8">
+        {/* Row 1: Left to Right */}
+        <div className="flex overflow-hidden">
+          <div className="animate-marquee flex gap-4 md:gap-6 px-4">
+            {row1.map((tech, index) => (
+              <div key={`row1-${index}`} className="group tech-icon-container p-6 md:p-8">
+                <div className="flex flex-col items-center gap-4 transition-transform duration-500 group-hover:-translate-y-2">
+                  <img src={tech.icon} alt={tech.name} className="w-10 h-10 md:w-12 md:h-12 grayscale group-hover:grayscale-0 transition-all duration-500" />
+                  <div className="text-center">
+                    <h4 className="font-black text-[10px] md:text-xs tracking-tight">{tech.name}</h4>
                   </div>
-                  <p className="font-bold text-[10px] tracking-widest uppercase opacity-60 text-[var(--text)] group-hover:opacity-100 transition-opacity">
-                    {s.name}
-                  </p>
                 </div>
               </div>
             ))}
           </div>
         </div>
 
-        <div className="mt-16 flex flex-wrap justify-center gap-3 opacity-70">
-          <span className="px-6 py-2 border rounded-full text-[10px] font-bold uppercase tracking-widest border-[var(--border)] text-[var(--text)]">
-            Hover untuk detail
-          </span>
+        {/* Row 2: Right to Left */}
+        <div className="flex overflow-hidden">
+          <div className="animate-marquee-reverse flex gap-4 md:gap-6 px-4">
+            {row2.map((tech, index) => (
+              <div key={`row2-${index}`} className="group tech-icon-container p-6 md:p-8">
+                <div className="flex flex-col items-center gap-4 transition-transform duration-500 group-hover:-translate-y-2">
+                  <img src={tech.icon} alt={tech.name} className="w-10 h-10 md:w-12 md:h-12 grayscale group-hover:grayscale-0 transition-all duration-500" />
+                  <div className="text-center">
+                    <h4 className="font-black text-[10px] md:text-xs tracking-tight">{tech.name}</h4>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

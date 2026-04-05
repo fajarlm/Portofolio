@@ -1,19 +1,24 @@
 import React from 'react';
 import { X, Globe, User, Terminal, Mail } from 'lucide-react';
+import { translations } from '../data/portfolioData';
+import type { Language } from '../types';
 
 interface SidebarProps {
   isOpen: boolean;
   onClose: () => void;
+  lang: Language;
 }
 
-const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
+const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, lang }) => {
+  const t = translations[lang].nav;
+  
   const menuItems = [
-    { name: 'Beranda', id: 'home' },
-    { name: 'Tentang', id: 'tentang' },
-    { name: 'Keahlian', id: 'keahlian' },
-    { name: 'Proyek', id: 'proyek' },
-    { name: 'Sertifikat', id: 'sertifikat' },
-    { name: 'Kontak', id: 'contact' }
+    { name: lang === 'en' ? 'Home' : 'Beranda', id: 'home' },
+    { name: t.about, id: 'tentang' },
+    { name: lang === 'en' ? 'Skills' : 'Keahlian', id: 'keahlian' },
+    { name: t.projects, id: 'proyek' },
+    { name: t.certificates, id: 'sertifikat' },
+    { name: t.contact, id: 'contact' }
   ];
 
   const socialLinks = [
