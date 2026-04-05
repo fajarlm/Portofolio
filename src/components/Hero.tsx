@@ -36,7 +36,7 @@ const Hero: React.FC<HeroProps> = ({ lang }) => {
               <a href="#proyek" className="bg-[var(--text)] text-[var(--bg)] px-10 py-4 rounded-full font-bold transition-transform hover:scale-105 active:scale-95">
                 {lang === 'en' ? 'View Projects' : 'Lihat Proyek'}
               </a>
-              <a href='#contact'  rel="noopener noreferrer" className="border border-[var(--border)] px-10 py-4 rounded-full font-bold transition-all hover:border-[var(--text)] flex items-center gap-3 group">
+              <a href='#contact'  className="border border-[var(--border)] px-10 py-4 rounded-full font-bold transition-all hover:border-[var(--text)] flex items-center gap-3 group">
                 {lang === 'en' ? 'Hire Me' : 'Hubungi Saya'}
                 <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
               </a>
