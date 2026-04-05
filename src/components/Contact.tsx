@@ -22,14 +22,14 @@ const Contact: React.FC<ContactProps> = ({ lang }) => {
     <section id="contact" className="py-40 px-6 border-t border-[var(--border)] relative overflow-hidden">
       <div className="container mx-auto max-w-5xl text-center mb-24" data-aos="fade-up">
         <h2 className="text-xs font-bold uppercase tracking-[0.5em] opacity-30 mb-6 text-center">{t.available}</h2>
-        <h3 className="text-5xl md:text-7xl font-black tracking-tighter mb-8 leading-none">
+        <h3 className="text-xl md:text-3xl font-black tracking-tighter mb-8 leading-none">
           {t.title} <span className="accent-text italic">{t.subtitle}</span>
         </h3>
         
         <div className="relative inline-flex flex-col items-center group">
           <button 
             onClick={copyEmail}
-            className="text-2xl md:text-4xl font-light hover:opacity-50 transition-opacity border-b border-[var(--border)] pb-2 inline-flex items-center gap-4 text-nowrap"
+            className="text-2xl italic md:text-2xl font-light hover:opacity-50 transition-opacity border-b border-[var(--border)] pb-2 inline-flex items-center gap-4 text-nowrap"
           >
             <Mail size={32} className="opacity-50" />
             {email}

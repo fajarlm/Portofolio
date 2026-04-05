@@ -9,12 +9,17 @@ interface TechStackProps {
 const TechStack: React.FC<TechStackProps> = ({ lang }) => {
   const t = translations[lang].tech;
   
-  // Bagi techStack jadi 2 baris
-  const row1 = [...techStack.slice(0, 4), ...techStack.slice(0, 4)]; // Duplikasi buat infinite scroll
-  const row2 = [...techStack.slice(4), ...techStack.slice(4)];
+  // Bagi techStack jadi 2 baris yang seimbang (8 item per baris)
+  const half = Math.ceil(techStack.length / 2);
+  const firstHalf = techStack.slice(0, half);
+  const secondHalf = techStack.slice(half);
+
+  // Duplikasi konten buat efek infinite scroll yang mulus
+  const row1 = [...firstHalf, ...firstHalf, ...firstHalf]; 
+  const row2 = [...secondHalf, ...secondHalf, ...secondHalf];
 
   return (
-    <section id="keahlian" className="py-24 md:py-32 overflow-hidden relative">
+    <section id="keahlian" className="py-24 md:py-32 overflow-hidden relative ">
       <div className="container mx-auto px-6 mb-16 md:mb-24">
         <div className="flex flex-col md:flex-row justify-between items-center md:items-end gap-8">
           <div className="text-center md:text-left">
@@ -29,14 +34,13 @@ const TechStack: React.FC<TechStackProps> = ({ lang }) => {
         </div>
       </div>
 
-      <div className="space-y-6 md:space-y-8">
-        {/* Row 1: Left to Right */}
-        <div className="flex overflow-hidden">
+      <div className="space-y-6 md:space-y-8 bg-shape-grid">
+        <div className="flex overflow-hidden group">
           <div className="animate-marquee flex gap-4 md:gap-6 px-4">
             {row1.map((tech, index) => (
-              <div key={`row1-${index}`} className="group tech-icon-container p-6 md:p-8">
-                <div className="flex flex-col items-center gap-4 transition-transform duration-500 group-hover:-translate-y-2">
-                  <img src={tech.icon} alt={tech.name} className="w-10 h-10 md:w-12 md:h-12 grayscale group-hover:grayscale-0 transition-all duration-500" />
+              <div key={`row1-${index}`} className="group/item tech-icon-container p-6 md:p-8">
+                <div className="flex flex-col items-center gap-4 transition-transform duration-500 group-hover/item:-translate-y-2">
+                  <img src={tech.icon} alt={tech.name} className="w-10 h-10 md:w-12 md:h-12 grayscale group-hover/item:grayscale-0 transition-all duration-500" />
                   <div className="text-center">
                     <h4 className="font-black text-[10px] md:text-xs tracking-tight">{tech.name}</h4>
                   </div>
@@ -46,13 +50,12 @@ const TechStack: React.FC<TechStackProps> = ({ lang }) => {
           </div>
         </div>
 
-        {/* Row 2: Right to Left */}
-        <div className="flex overflow-hidden">
+        <div className="flex overflow-hidden group">
           <div className="animate-marquee-reverse flex gap-4 md:gap-6 px-4">
             {row2.map((tech, index) => (
-              <div key={`row2-${index}`} className="group tech-icon-container p-6 md:p-8">
-                <div className="flex flex-col items-center gap-4 transition-transform duration-500 group-hover:-translate-y-2">
-                  <img src={tech.icon} alt={tech.name} className="w-10 h-10 md:w-12 md:h-12 grayscale group-hover:grayscale-0 transition-all duration-500" />
+              <div key={`row2-${index}`} className="group/item tech-icon-container p-6 md:p-8">
+                <div className="flex flex-col items-center gap-4 transition-transform duration-500 group-hover/item:-translate-y-2">
+                  <img src={tech.icon} alt={tech.name} className="w-10 h-10 md:w-12 md:h-12 grayscale group-hover/item:grayscale-0 transition-all duration-500" />
                   <div className="text-center">
                     <h4 className="font-black text-[10px] md:text-xs tracking-tight">{tech.name}</h4>
                   </div>

@@ -38,7 +38,7 @@ const Projects: React.FC<ProjectsProps> = ({ lang }) => {
   };
 
   return (
-    <section id="proyek" className="py-24 md:py-32 border-t border-[var(--border)] relative">
+    <section id="proyek" className="py-24 md:py-32 border-t border-[var(--border)] relative   ">
       <div className="container mx-auto text-[var(--text)]">
         <div className="flex flex-col lg:flex-row justify-between items-center lg:items-end mb-12 md:mb-20 gap-8">
           <div className="text-center lg:text-left">

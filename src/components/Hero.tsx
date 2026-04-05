@@ -23,12 +23,12 @@ const Hero: React.FC<HeroProps> = ({ lang }) => {
               <span>fajar kusuma • {t.role}</span>
             </div>
 
-            <h1 className="text-2xl md:text-2xl lg:text-4xl font-black leading-[0.85] tracking-tighter uppercase">
-              {t.greeting} <br /> 
-              Fajar <span className="accent-text italic">Kusuma.</span>
+            <h1 className="text-xl md:text-2xl lg:text-4xl font-black leading-[1] tracking-tighter uppercase">
+              Fajar
+              <span className="accent-text italic"> Kusuma.</span>
             </h1>
 
-            <p className="text-lg md:text-2xl opacity-50 max-w-xl font-medium leading-tight tracking-tight">
+            <p className="text-lg md:text-xl opacity-60 max-w-2xl font-medium leading-relaxed tracking-tight">
               {t.tagline}
             </p>
 
@@ -36,20 +36,20 @@ const Hero: React.FC<HeroProps> = ({ lang }) => {
               <a href="#proyek" className="bg-[var(--text)] text-[var(--bg)] px-10 py-4 rounded-full font-bold transition-transform hover:scale-105 active:scale-95">
                 {lang === 'en' ? 'View Projects' : 'Lihat Proyek'}
               </a>
-              <a href={socialLinks.whatsapp} target="_blank" rel="noopener noreferrer" className="border border-[var(--border)] px-10 py-4 rounded-full font-bold transition-all hover:border-[var(--text)] flex items-center gap-3 group">
+              <a href='#contact'  rel="noopener noreferrer" className="border border-[var(--border)] px-10 py-4 rounded-full font-bold transition-all hover:border-[var(--text)] flex items-center gap-3 group">
                 {lang === 'en' ? 'Hire Me' : 'Hubungi Saya'}
                 <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
               </a>
             </div>
 
             <div className="grid grid-cols-2 md:grid-cols-3 gap-8 pt-12 border-t border-[var(--border)] w-full max-w-md opacity-60">
-              <div>
+              <div className='bg-[var(--text)] rounded-full p-2 flex justify-center flex-col text-white items-center'>
                 <p className="text-4xl font-black tracking-tight">2+</p>
                 <p className="text-[10px] font-bold uppercase tracking-widest">Years</p>
               </div>
-              <div>
+              <div className='bg-[var(--text)] rounded-full p-2 flex justify-center flex-col text-white items-center'>
                 <p className="text-4xl font-black tracking-tight">10+</p>
-                <p className="text-[10px] font-bold uppercase opacity-40 tracking-widest">Works</p>
+                <p className="text-[10px] font-bold uppercase tracking-widest">Projects</p>
               </div>
             </div>
           </div>

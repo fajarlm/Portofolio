@@ -1,12 +1,13 @@
 @import "tailwindcss";
 
 :root { 
+    scroll-behavior: smooth;
     --bg: #fafbff; 
     --text: #1e293b; 
     --text-muted: #64748b; 
     --accent: #4f46e5; 
     --card: #ffffff; 
-    --border: #f1f5f9; 
+    --border: #748799; 
     --icon-bg: #f8fafc;
     --placeholder: #94a3b8;
 }
@@ -34,7 +35,7 @@
 }
 
 body { 
-    font-family: 'Inter', system-ui, -apple-system, sans-serif; 
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif; 
     background-color: var(--bg); 
     color: var(--text); 
     transition: background-color 0.5s cubic-bezier(0.4, 0, 0.2, 1), color 0.3s ease;
@@ -64,6 +65,27 @@ body {
 }
 
 .accent-bg { background-color: var(--accent); }
+
+/* Background Patterns */
+.bg-shape-grid {
+    background-color: var(--bg);
+    background-image:  
+        radial-gradient(var(--border) 2px, transparent 2px);
+    background-size: 40px 40px;
+}
+
+.bg-grid-motion {
+    background-size: 50px 50px;
+    background-image: 
+        linear-gradient(to right, var(--border) 1px, transparent 1px),
+        linear-gradient(to bottom, var(--border) 1px, transparent 1px);
+    animation: grid-move 20s linear infinite;
+}
+
+@keyframes grid-move {
+    0% { background-position: 0 0; }
+    100% { background-position: 50px 50px; }
+}
 
 /* Tech Icon Container Centering */
 .tech-icon-container {

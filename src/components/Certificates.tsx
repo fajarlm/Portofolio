@@ -14,7 +14,7 @@ const Certificates: React.FC<CertificatesProps> = ({ lang }) => {
   const isPDF = (url: string) => url.toLowerCase().endsWith('.pdf');
 
   return (
-    <section id="sertifikat" className="py-24 md:py-32 border-t border-[var(--border)] relative overflow-hidden">
+    <section id="sertifikat" className="py-24 md:py-32 border-t border-[var(--border)] relative overflow-hidden bg-shape-grid">
       <div className="container mx-auto px-6 md:px-12 lg:px-24">
         <div className="text-center lg:text-left mb-16 md:mb-20">
           <h2 className="text-[10px] font-bold uppercase tracking-[0.4em] mb-4 opacity-30 text-[var(--text)]">{lang === 'en' ? 'Achievements' : 'Pencapaian'}</h2>
