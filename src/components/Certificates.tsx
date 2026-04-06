@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { certificatesData, translations } from '../data/portfolioData';
-import { Award, X, FileText, Eye } from 'lucide-react';
+import { Award, X, FileText, Eye, ChevronLeft, ChevronRight } from 'lucide-react';
+import AOS from 'aos';
 import type { Language } from '../types';
 
 interface CertificatesProps {
@@ -9,9 +10,21 @@ interface CertificatesProps {
 
 const Certificates: React.FC<CertificatesProps> = ({ lang }) => {
   const [selectedFile, setSelectedFile] = useState<string | null>(null);
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 6;
   const t = translations[lang].certificates;
 
   const isPDF = (url: string) => url.toLowerCase().endsWith('.pdf');
+
+  // Logic Pagination
+  const totalPages = Math.ceil(certificatesData.length / itemsPerPage);
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = certificatesData.slice(indexOfFirstItem, indexOfLastItem);
+
+  useEffect(() => {
+    AOS.refresh();
+  }, [currentPage]);
 
   return (
     <section id="sertifikat" className="py-24 md:py-32 border-t border-[var(--border)] relative overflow-hidden bg-shape-grid">
@@ -22,11 +35,11 @@ const Certificates: React.FC<CertificatesProps> = ({ lang }) => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-          {certificatesData.map((cert, i) => (
+          {currentItems.map((cert, i) => (
             <div 
               key={cert.id} 
               data-aos="fade-up" 
-              data-aos-delay={i * 100}
+              data-aos-delay={i * 50}
               onClick={() => setSelectedFile(cert.file)}
               className="group card-minimal rounded-[2.5rem] p-8 flex flex-col justify-between hover:border-[var(--text)] transition-all duration-500 shadow-sm hover:shadow-xl relative overflow-hidden cursor-pointer bg-white dark:bg-zinc-900/20"
             >
@@ -48,6 +61,37 @@ const Certificates: React.FC<CertificatesProps> = ({ lang }) => {
             </div>
           ))}
         </div>
+
+        {/* Pagination Controls */}
+        {totalPages > 1 && (
+          <div className="mt-20 flex justify-center items-center gap-8">
+            <button 
+              disabled={currentPage === 1} 
+              onClick={() => setCurrentPage(p => p - 1)} 
+              className="p-4 rounded-full border border-[var(--border)] hover:border-[var(--text)] disabled:opacity-20 transition-all shadow-sm group bg-[var(--card)]"
+            >
+              <ChevronLeft size={20} className="group-hover:-translate-x-1 transition-transform" />
+            </button>
+            
+            <div className="flex gap-4">
+              {[...Array(totalPages)].map((_, i) => (
+                <button 
+                  key={i} 
+                  onClick={() => setCurrentPage(i + 1)} 
+                  className={`w-2 h-2 rounded-full transition-all ${currentPage === i + 1 ? 'bg-[var(--text)] scale-150 shadow-md' : 'bg-[var(--border)] hover:bg-[var(--text-muted)]'}`} 
+                />
+              ))}
+            </div>
+
+            <button 
+              disabled={currentPage === totalPages} 
+              onClick={() => setCurrentPage(p => p + 1)} 
+              className="p-4 rounded-full border border-[var(--border)] hover:border-[var(--text)] disabled:opacity-20 transition-all shadow-sm group bg-[var(--card)]"
+            >
+              <ChevronRight size={20} className="group-hover:translate-x-1 transition-transform" />
+            </button>
+          </div>
+        )}
       </div>
 
       {selectedFile && (

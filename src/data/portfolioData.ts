@@ -2,6 +2,22 @@ import type { Skill, Project, Certificate } from '../types';
 import quranic from '../assets/projects/quranic.png';
 import atten from '../assets/projects/attendances.png';
 
+// Certificate Imports
+import certReactPemula from '../assets/sertifikat/br-pemula.pdf';
+import certEnglish from '../assets/sertifikat/english.pdf';
+import certFeBeDasar from '../assets/sertifikat/fe&be_dasar.pdf';
+import certFe from '../assets/sertifikat/sertif-fe.pdf';
+import certGit from '../assets/sertifikat/sertif-git.pdf';
+import certJs from '../assets/sertifikat/sertif-js.pdf';
+import certLogic from '../assets/sertifikat/logic.pdf';
+import certFundamental from '../assets/sertifikat/fundamental.pdf';
+import certSoft from '../assets/sertifikat/soft.pdf';
+import certFinancial from '../assets/sertifikat/financial.pdf';
+import certFajar1 from '../assets/sertifikat/cert-fajar-kusuma.pdf';
+import certFajar2 from '../assets/sertifikat/e-sertifikat-fajar-kusuma.pdf';
+import certFajar3 from '../assets/sertifikat/Fajar_kusuma-12410279.pdf';
+import certCourse from '../assets/sertifikat/sertifikat_course_123_4363478_230125134956.pdf';
+
 export const techStack: Skill[] = [
   { name: 'HTML5', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg', desc: { en: 'Semantic Web Architecture', id: 'Arsitektur Web Semantik' } },
   { name: 'CSS3', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg', desc: { en: 'Responsive & Modern UI Implementation', id: 'Implementasi UI Modern & Responsif' } },
@@ -69,9 +85,20 @@ export const projectsData: Project[] = [
 ];
 
 export const certificatesData: Certificate[] = [
-  { id: 1, title: 'Professional Web Developer', issuer: 'Dicoding Academy', date: '2023', file: 'https://images.unsplash.com/photo-1589330694653-ded6df03f754?w=1200' },
-  { id: 2, title: 'Responsive Design Mastery', issuer: 'FreeCodeCamp', date: '2023', file: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf' },
-  { id: 3, title: 'Junior Web Programmer', issuer: 'BNSP Certification', date: '2024', file: 'https://images.unsplash.com/photo-1606326608606-aa0b62935f2b?w=1200' }
+  { id: 1, title: 'Belajar Dasar Pemrograman Web', issuer: 'Dicoding Academy', date: '2024', file: certFe },
+  { id: 2, title: 'Belajar Dasar JavaScript', issuer: 'Dicoding Academy', date: '2024', file: certJs },
+  { id: 3, title: 'Belajar Membuat Aplikasi Web dengan React', issuer: 'Dicoding Academy', date: '2024', file: certReactPemula },
+  { id: 4, title: 'Frontend Developer Career Path', issuer: 'Dicoding', date: '2024', file: certFe },
+  { id: 5, title: 'Git & GitHub Certification', issuer: 'Digital Academy', date: '2024', file: certGit },
+  { id: 6, title: 'Programming Logic Certification', issuer: 'Course Academy', date: '2024', file: certLogic },
+  { id: 7, title: 'Programming Fundamental', issuer: 'Tech Institute', date: '2024', file: certFundamental },
+  { id: 8, title: 'Frontend & Backend Development Basics', issuer: 'Fullstack Academy', date: '2024', file: certFeBeDasar },
+  { id: 9, title: 'English Proficiency Certificate', issuer: 'Language Center', date: '2024', file: certEnglish },
+  { id: 10, title: 'Financial Literacy for Developers', issuer: 'Business School', date: '2024', file: certFinancial },
+  { id: 11, title: 'Professional Soft Skills', issuer: 'HR Development', date: '2024', file: certSoft },
+  { id: 12, title: 'Official Web Developer Credential', issuer: 'BNSP / National Body', date: '2024', file: certFajar1 },
+  { id: 13, title: 'Software Engineering Excellence', issuer: 'Vocational School', date: '2024', file: certFajar3 },
+  { id: 14, title: 'Fullstack Web Development Course', issuer: 'Online Learning Platform', date: '2024', file: certCourse }
 ];
 
 export const socialLinks = {
@@ -97,7 +124,7 @@ export const translations = {
     hero: {  role: 'Pengembang Fullstack', tagline: 'Hai! Saya Fajar, seorang Fullstack Developer yang bersemangat membangun teknologi aplikasi web modern. Jangan ragu untuk menghubungi saya melalui email atau terhubung dengan saya di LinkedIn dan GitHub!.' },
     about: { title: 'Membangun pengalaman digital yang bermakna.', desc: 'Saya adalah siswa pengembangan perangkat lunak yang bersemangat, berfokus pada pembuatan aplikasi web dan mobile berperforma tinggi dengan mengutamakan kebutuhan pengguna.' },
     tech: { title: 'Alat &', subtitle: 'Teknologi.' },
-    projects: { title: 'Proyek', subtitle: 'Pilihan.', filterAll: 'Semua' },
+    projects: { title: 'Proyek', subtitle: 'Ku .', filterAll: 'Semua' },
     certificates: { title: 'Sertifikat', subtitle: '.' },
     contact: { title: 'Kontak', subtitle: 'SAYA.', available: 'Terbuka untuk peluang baru', social: 'Media Sosial', send: 'Kirim Pesan' },
     footer: { copyright: '© 2024 Fajar Kusuma. Hak cipta dilindungi.' }
