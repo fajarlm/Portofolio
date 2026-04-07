@@ -97,6 +97,7 @@ export const certificatesData: Certificate[] = [
   { id: 10, title: 'Financial Literacy for Developers', issuer: 'Business School', date: '2024', file: certFinancial },
   { id: 11, title: 'Professional Soft Skills', issuer: 'HR Development', date: '2024', file: certSoft },
   { id: 12, title: 'Official Web Developer Credential', issuer: 'BNSP / National Body', date: '2024', file: certFajar1 },
+  { id: 12, title: 'Game Development Certification', issuer: 'IGDX', date: '2024', file: certFajar2 },
   { id: 13, title: 'Software Engineering Excellence', issuer: 'Vocational School', date: '2024', file: certFajar3 },
   { id: 14, title: 'Fullstack Web Development Course', issuer: 'Online Learning Platform', date: '2024', file: certCourse }
 ];
