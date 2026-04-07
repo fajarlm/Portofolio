@@ -14,7 +14,7 @@ import certFundamental from '../assets/sertifikat/fundamental.pdf';
 import certSoft from '../assets/sertifikat/soft.pdf';
 import certFinancial from '../assets/sertifikat/financial.pdf';
 import certFajar1 from '../assets/sertifikat/cert-fajar-kusuma.pdf';
-import certFajar2 from '../assets/sertifikat/e-sertifikat-fajar-kusuma.pdf';
+import certFajar2 from '../assets/sertifikat/IGDX.pdf';
 import certFajar3 from '../assets/sertifikat/Fajar_kusuma-12410279.pdf';
 import certCourse from '../assets/sertifikat/sertifikat_course_123_4363478_230125134956.pdf';
 
