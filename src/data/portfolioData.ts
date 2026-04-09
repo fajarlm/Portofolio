@@ -65,21 +65,7 @@ export const projectsData: Project[] = [
     tech: ['tailwind', 'MySQL', 'Laravel'], 
     img: atten,
     gallery: [],
-    github: 'https://github.com/fajarlm' 
-  },
-  { 
-    id: 3, 
-    title: 'Restaurant Inventory', 
-    description: {
-      en: 'Comprehensive stock management system with automated reordering.',
-      id: 'Sistem manajemen stok lengkap dengan pemesanan ulang otomatis.'
-    },
-    type: 'web', 
-    tech: ['Laravel', 'MySQL', 'Bootstrap', 'Chart.js'], 
-    img: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=800',
-    gallery: ['https://images.unsplash.com/photo-1556742044-3c52d6e88c62?w=800'],
-    github: 'https://github.com/fajarlm', 
-    demo: 'https://demo.com' 
+    github: 'https://github.com/fajarlm/AbsensikuV2' 
   },
   
 ];
@@ -114,10 +100,10 @@ export const translations = {
     nav: { about: 'About', projects: 'Projects', certificates: 'Certificates', contact: 'Contact' },
     hero: { role: 'Fullstack Developer', tagline: 'Hi! I am fajar, a Fullstack Developer passionate about building modern web applications technologies. Feel free to reach out via email or connect with me on LinkedIn and GitHub!.' },
     about: { title: 'Crafting digital experiences with purpose.', desc: 'I am a passionate software engineering student focused on building high-performance web and mobile applications that put users first.' },
-    tech: { title: 'Tools of', subtitle: 'The Trade.' },
+    tech: { title: 'Tech &', subtitle: 'stack.' },
     projects: { title: 'Featured', subtitle: 'Projects.', filterAll: 'All' },
     certificates: { title: 'Proof of', subtitle: 'Competence.' },
-    contact: { title: 'SAY', subtitle: 'HELLO.', available: 'Open for new opportunities', social: 'Social Links', send: 'Send Message' },
+    contact: { title: 'MY', subtitle: 'CONTACT.', available: 'Open for new opportunities', social: 'Social Links', send: 'Send Message' },
     footer: { copyright: '© 2024 Fajar Kusuma. All rights reserved.' }
   },
   id: {
@@ -127,7 +113,7 @@ export const translations = {
     tech: { title: 'Alat &', subtitle: 'Teknologi.' },
     projects: { title: 'Proyek', subtitle: 'Ku .', filterAll: 'Semua' },
     certificates: { title: 'Sertifikat', subtitle: '.' },
-    contact: { title: 'Kontak', subtitle: 'SAYA.', available: 'Terbuka untuk peluang baru', social: 'Media Sosial', send: 'Kirim Pesan' },
+    contact: { title: 'KONTAK', subtitle: 'SAYA.', available: 'Terbuka untuk peluang baru', social: 'Media Sosial', send: 'Kirim Pesan' },
     footer: { copyright: '© 2024 Fajar Kusuma. Hak cipta dilindungi.' }
   }
 };
