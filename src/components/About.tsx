@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import type { Language } from '../types';
 import { translations } from '../data/portfolioData';
+import { Button } from './ui/button';
 
 interface AboutProps {
   lang: Language;
@@ -22,6 +23,9 @@ const About: React.FC<AboutProps> = ({ lang }) => {
               <p className="text-sm md:text-base text-[var(--text)] opacity-60 leading-relaxed font-medium">
                 {t.desc}
               </p>
+              <Button variant="outline" size="lg" className="mt-6">
+                {lang === 'en' ? 'Download CV' : 'Unduh CV'}
+              </Button>
             </div>
 
             <div className="flex justify-center lg:justify-start gap-4 md:gap-8 mb-4">
