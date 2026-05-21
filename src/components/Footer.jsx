@@ -1,12 +1,6 @@
-import React from 'react';
 import { translations } from '../data/portfolioData';
-import type { Language } from '../types';
 
-interface FooterProps {
-  lang: Language;
-}
-
-const Footer: React.FC<FooterProps> = ({ lang }) => {
+const Footer = ({ lang }) => {
   const t = translations[lang].footer;
 
   return (

@@ -1,14 +1,9 @@
-import React, { useState } from 'react';
-import type { Language } from '../types';
+import { useState } from 'react';
 import { translations } from '../data/portfolioData';
 import { Button } from './ui/button';
 
-interface AboutProps {
-  lang: Language;
-}
-
-const About: React.FC<AboutProps> = ({ lang }) => {
-  const [activeTab, setActiveTab] = useState<'bio' | 'education'>('bio');
+const About = ({ lang }) => {
+  const [activeTab, setActiveTab] = useState('bio');
   const t = translations[lang].about;
 
   return (
@@ -29,7 +24,7 @@ const About: React.FC<AboutProps> = ({ lang }) => {
             </div>
 
             <div className="flex justify-center lg:justify-start gap-4 md:gap-8 mb-4">
-              {(['bio', 'education'] as const).map((tab) => (
+              {(['bio', 'education']).map((tab) => (
                 <button 
                   key={tab}
                   onClick={() => setActiveTab(tab)}

@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { ChevronUp } from 'lucide-react';
-import type { Theme, Language } from './types';
 
 import Navbar from './components/Navbar';
 import Sidebar from './components/Sidebar';
@@ -15,8 +14,8 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 
 export default function App() {
-  const [theme, setTheme] = useState<Theme>((localStorage.getItem('theme') as Theme) || 'light');
-  const [lang, setLang] = useState<Language>((localStorage.getItem('lang') as Language) || 'en');
+  const [theme, setTheme] = useState(localStorage.getItem('theme') || 'light');
+  const [lang, setLang] = useState(localStorage.getItem('lang') || 'en');
   const [isSidebarOpen, setSidebarOpen] = useState(false);
   const [showScrollTop, setShowScrollTop] = useState(false);
 

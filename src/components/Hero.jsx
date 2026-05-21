@@ -1,14 +1,8 @@
-import React from 'react';
 import { ArrowRight, Code2 } from 'lucide-react';
-import { translations } from '../data/portfolioData';
+import { projectsData, translations } from '../data/portfolioData';
 import imageProfil from '../assets/profil.png';
-import type { Language } from '../types';
 
-interface HeroProps {
-  lang: Language;
-}
-
-const Hero: React.FC<HeroProps> = ({ lang }) => {
+export default function Hero ({ lang }){
   const t = translations[lang].hero;
 
   return (
@@ -48,7 +42,7 @@ const Hero: React.FC<HeroProps> = ({ lang }) => {
                 <p className="text-[10px] font-bold uppercase tracking-widest">Years</p>
               </div>
               <div className='bg-[var(--text)] rounded-full p-2 flex justify-center flex-col text-white items-center'>
-                <p className="text-4xl font-black tracking-tight">10+</p>
+                <p className="text-4xl font-black tracking-tight">{projectsData.length}</p>
                 <p className="text-[10px] font-bold uppercase tracking-widest">Projects</p>
               </div>
             </div>
@@ -81,4 +75,4 @@ const Hero: React.FC<HeroProps> = ({ lang }) => {
   );
 };
 
-export default Hero;
+

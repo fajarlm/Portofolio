@@ -1,17 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { projectsData, translations } from '../data/portfolioData';
 import { Globe, ExternalLink, ChevronLeft, ChevronRight, X, Image as ImageIcon } from 'lucide-react';
 import AOS from 'aos';
-import type { Language } from '../types';
 
-interface ProjectsProps {
-  lang: Language;
-}
-
-const Projects: React.FC<ProjectsProps> = ({ lang }) => {
-  const [filter, setFilter] = useState<'all' | 'web' | 'mobile' | 'desktop'>('all');
+const Projects = ({ lang }) => {
+  const [filter, setFilter] = useState('all');
   const [currentPage, setCurrentPage] = useState(1);
-  const [selectedGallery, setSelectedGallery] = useState<string[] | null>(null);
+  const [selectedGallery, setSelectedGallery] = useState(null);
   const itemsPerPage = 6;
   const t = translations[lang].projects;
 
@@ -22,7 +17,7 @@ const Projects: React.FC<ProjectsProps> = ({ lang }) => {
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = filteredProjects.slice(indexOfFirstItem, indexOfLastItem);
 
-  const handleFilterChange = (cat: 'all' | 'web' | 'mobile' | 'desktop') => {
+  const handleFilterChange = (cat) => {
     setFilter(cat);
     setCurrentPage(1);
   };
@@ -31,7 +26,7 @@ const Projects: React.FC<ProjectsProps> = ({ lang }) => {
     AOS.refresh();
   }, [currentPage]);
 
-  const filterMap: Record<string, string> = {
+  const filterMap = {
     all: t.filterAll,
     web: 'Web',
     mobile: 'Mobile',
@@ -48,7 +43,7 @@ const Projects: React.FC<ProjectsProps> = ({ lang }) => {
           </div>
 
           <div className="flex flex-wrap justify-center gap-2">
-            {(['all', 'web', 'mobile', 'desktop'] as const).map(cat => (
+            {(['all', 'web', 'mobile', 'desktop']).map(cat => (
               <button 
                 key={cat}
                 onClick={() => handleFilterChange(cat)}

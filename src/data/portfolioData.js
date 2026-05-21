@@ -1,4 +1,3 @@
-import type { Skill, Project, Certificate } from '../types';
 import quranic from '../assets/projects/quranic.png';
 import atten from '../assets/projects/attendances.png';
 
@@ -18,7 +17,7 @@ import certFajar2 from '../assets/sertifikat/IGDX.pdf';
 import certFajar3 from '../assets/sertifikat/Fajar_kusuma-12410279.pdf';
 import certCourse from '../assets/sertifikat/sertifikat_course_123_4363478_230125134956.pdf';
 
-export const techStack: Skill[] = [
+export const techStack = [
   { name: 'HTML5', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg', desc: { en: 'Semantic Web Architecture', id: 'Arsitektur Web Semantik' } },
   { name: 'CSS3', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg', desc: { en: 'Responsive & Modern UI Implementation', id: 'Implementasi UI Modern & Responsif' } },
   { name: 'JavaScript', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg', desc: { en: 'Client-side Logic & DOM Manipulation', id: 'Logika Sisi Klien & Manipulasi DOM' } },
@@ -37,7 +36,7 @@ export const techStack: Skill[] = [
   { name: 'Figma', icon: 'https://www.vectorlogo.zone/logos/figma/figma-icon.svg', desc: { en: 'Interface Design & User Experience', id: 'Desain Antarmuka & Pengalaman Pengguna' } }
 ];
 
-export const projectsData: Project[] = [
+export const projectsData = [
   { 
     id: 1, 
     title: 'Quranic', 
@@ -70,7 +69,7 @@ export const projectsData: Project[] = [
   
 ];
 
-export const certificatesData: Certificate[] = [
+export const certificatesData = [
   { id: 1, title: 'Belajar Dasar Pemrograman Web', issuer: 'Dicoding Academy', date: '2024', file: certFe },
   { id: 2, title: 'Belajar Dasar JavaScript', issuer: 'Dicoding Academy', date: '2024', file: certJs },
   { id: 3, title: 'Belajar Membuat Aplikasi Web dengan React', issuer: 'Dicoding Academy', date: '2024', file: certReactPemula },

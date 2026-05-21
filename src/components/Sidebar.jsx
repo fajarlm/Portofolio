@@ -1,15 +1,7 @@
-import React from 'react';
 import { X, Globe, User, Terminal, Mail } from 'lucide-react';
 import { translations } from '../data/portfolioData';
-import type { Language } from '../types';
 
-interface SidebarProps {
-  isOpen: boolean;
-  onClose: () => void;
-  lang: Language;
-}
-
-const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, lang }) => {
+const Sidebar = ({ isOpen, onClose, lang }) => {
   const t = translations[lang].nav;
   
   const menuItems = [

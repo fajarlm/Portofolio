@@ -1,17 +1,6 @@
-import React from 'react';
 import { Menu, Languages } from 'lucide-react';
-import type { Theme, Language } from '../types';
 
-interface NavbarProps {
-  theme: string;
-  setTheme: (t: Theme) => void;
-  lang: Language;
-  setLang: (l: Language) => void;
-  onOpenSidebar: () => void;
-  isSidebarOpen: boolean;
-}
-
-const Navbar: React.FC<NavbarProps> = ({ theme, setTheme, lang, setLang, onOpenSidebar, isSidebarOpen }) => {
+const Navbar = ({ theme, setTheme, lang, setLang, onOpenSidebar, isSidebarOpen }) => {
   return (
     <header className={`fixed top-0 right-0 z-50 p-4 transition-all duration-500 ${isSidebarOpen ? 'lg:left-72' : 'left-0'}`}>
       <nav className="container mx-auto glass rounded-2xl px-6 py-3 flex justify-between items-center shadow-sm">
@@ -38,7 +27,7 @@ const Navbar: React.FC<NavbarProps> = ({ theme, setTheme, lang, setLang, onOpenS
           </div>
 
           <div className="flex items-center gap-2 bg-black/5 p-1 rounded-full border border-[var(--border)]">
-            {(['light', 'dark', 'cyan'] as Theme[]).map((t) => (
+            {(['light', 'dark', 'cyan']).map((t) => (
               <button 
                 key={t}
                 onClick={() => setTheme(t)}

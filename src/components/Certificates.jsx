@@ -1,20 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { certificatesData, translations } from '../data/portfolioData';
 import { Award, X, FileText, Eye, ChevronLeft, ChevronRight } from 'lucide-react';
 import AOS from 'aos';
-import type { Language } from '../types';
 
-interface CertificatesProps {
-  lang: Language;
-}
-
-const Certificates: React.FC<CertificatesProps> = ({ lang }) => {
-  const [selectedFile, setSelectedFile] = useState<string | null>(null);
+const Certificates = ({ lang }) => {
+  const [selectedFile, setSelectedFile] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 6;
   const t = translations[lang].certificates;
 
-  const isPDF = (url: string) => url.toLowerCase().endsWith('.pdf');
+  const isPDF = (url) => url.toLowerCase().endsWith('.pdf');
 
   // Logic Pagination
   const totalPages = Math.ceil(certificatesData.length / itemsPerPage);

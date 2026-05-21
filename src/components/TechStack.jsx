@@ -1,12 +1,6 @@
-import React from 'react';
 import { techStack, translations } from '../data/portfolioData';
-import type { Language } from '../types';
 
-interface TechStackProps {
-  lang: Language;
-}
-
-const TechStack: React.FC<TechStackProps> = ({ lang }) => {
+const TechStack = ({ lang }) => {
   const t = translations[lang].tech;
   
   // Bagi techStack jadi 2 baris yang seimbang (8 item per baris)

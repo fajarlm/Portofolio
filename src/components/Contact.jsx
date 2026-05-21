@@ -1,13 +1,8 @@
 import { Mail, Send, ArrowRight, Globe, User, Phone, CheckCircle2, Copy } from 'lucide-react';
 import { socialLinks, translations } from '../data/portfolioData';
 import { useState } from 'react';
-import type { Language } from '../types';
 
-interface ContactProps {
-  lang: Language;
-}
-
-const Contact: React.FC<ContactProps> = ({ lang }) => {
+const Contact = ({ lang }) => {
   const [copied, setCopied] = useState(false);
   const email = "kusumafajar080802@gmail.com";
   const t = translations[lang].contact;
